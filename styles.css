@@ -1,0 +1,23 @@
+.pollinations-prompt-input {
+	width: 100%;
+	margin: 0.5rem 0;
+	padding: 0.5rem;
+}
+
+.pollinations-modal-actions {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: flex-end;
+	margin-top: 0.5rem;
+}
+
+.pollinations-code {
+	font-family: var(--font-monospace);
+	font-size: 1.4em;
+	letter-spacing: 0.2em;
+	background: var(--background-secondary);
+	border-radius: 6px;
+	padding: 0.6em 1em;
+	text-align: center;
+	margin: 0.75rem 0;
+}

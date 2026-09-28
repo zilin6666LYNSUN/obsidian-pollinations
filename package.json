@@ -1,0 +1,26 @@
+{
+  "name": "obsidian-pollinations",
+  "version": "1.0.0",
+  "description": "Generate text and images with Pollinations inside your Obsidian notes, paying with your own Pollen.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+  },
+  "keywords": [
+    "obsidian",
+    "pollinations",
+    "ai",
+    "generation"
+  ],
+  "author": "zilin6666LYNSUN",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "^0.19.11",
+    "obsidian": "latest",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  }
+}
