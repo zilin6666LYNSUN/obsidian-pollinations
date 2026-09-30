@@ -63,3 +63,36 @@ npm run build   # tsc --noEmit + esbuild → main.js
 ## License
 
 MIT
+
+## How the plugin calls the Pollinations API
+
+Text generation posts to the unified chat completions endpoint with the visitor's key (or the free tier):
+
+``ts
+// src/api.ts
+const res = await requestUrl({
+  url: "https://gen.pollinations.ai/v1/chat/completions",
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    ...(apiKey ? { Authorization: Bearer  } : {}),
+  },
+  body: JSON.stringify({
+    model: opts.model || "community/MarcosFRG/deepseek-v4-flash-0731",
+    messages: [{ role: "user", content: prompt }],
+  }),
+});
+``
+
+Image generation calls the image endpoint and saves the PNG into the vault:
+
+``ts
+// src/api.ts
+const res = await requestUrl({
+  url: "https://gen.pollinations.ai/image/{prompt}?model={model}&nologo=true",
+  method: "GET",
+  headers: apiKey ? { Authorization: Bearer  } : {},
+});
+``
+
+Sign-in uses the Pollinations device flow (`src/deviceFlow.ts`): request a device code from `https://enter.pollinations.ai/api/device/code`, then poll `/api/device/token` until the `sk_…` key is issued.
